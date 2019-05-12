@@ -10,9 +10,12 @@ const bookRouter = express.Router();
 const Book = require("./models/bookModel");
 
 bookRouter.route("/books").get((req, res) => {
-  const response = { hello: "This is my API" };
-
-  res.json(response);
+  Book.find((err, books) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json(books);
+  });
 });
 
 app.use("/api", bookRouter);
