@@ -1,7 +1,7 @@
 const express = require("express");
 
-function routes() {
-  const router = express.router();
+function routes(Book) {
+  const bookRouter = express.Router();
 
   bookRouter
     .route("/books")
